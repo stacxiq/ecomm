@@ -1,0 +1,88 @@
+
+
+<ion-content no-padding>
+    <ion-card>
+      <ion-slides loop="true" autoplay="3000" pager>
+        <ion-slide *ngFor="let number of [1,2,3,4,5,6,7]">
+          <img src="./assets/imgs/{{number}}.jpg" />
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+    <h2 style="font-family:MyFont; font-size: 22px; color: black; text-align: center; margin-bottom: -30px; margin-top:15px;">الاقسام</h2>
+
+    <section class="hot_deals_area section_gap">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6" (click)="buy('clothes')">
+            <div class="hot_deal_box">
+              <img class="img-fluid" src="assets/imgs/product/hot_deals/1.jpg" alt="">
+              <div class="content">
+                <h2>ملابس</h2>
+                <p>أنتيكــا</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-6" (click)="buy('accessories')">
+            <div class="hot_deal_box">
+              <img class="img-fluid" src="assets/imgs/product/hot_deals/2.jpg" alt="">
+              <div class="content">
+                <h2>اكسسوارات</h2>
+                <p>أنتيكــا</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="container-fluid" (click)="buy('Perfumes')">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="hot_deal_box">
+              <img class="img-fluid" src="assets/imgs/product/hot_deals/3.jpg" alt="">
+              <div class="content">
+                <h2>عطور</h2>
+                <p>أنتيكــا</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-6" (click)="buy('Gifts')">
+            <div class="hot_deal_box">
+              <img class="img-fluid" src="assets/imgs/product/hot_deals/4.jpg" alt="">
+              <div class="content">
+                <h2>تحف وهدايا</h2>
+                <p>أنتيكــا</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="container-fluid" (click)="buy('Stationery')">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="hot_deal_box">
+              <img class="img-fluid" src="assets/imgs/product/hot_deals/5.jpg" alt="">
+              <div class="content">
+                <h2>قرطاسية</h2>
+                <p>أنتيكــا</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-lg-6" >
+            <div class="hot_deal_box" (click)="buy('Appliances')">
+              <img class="img-fluid" src="assets/imgs/product/hot_deals/6.jpg" alt="">
+              <div class="content">
+                <h2>اجهزة منزلية</h2>
+                <p>أنتيكــا</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</ion-content>

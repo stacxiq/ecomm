@@ -1,0 +1,60 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" style="text-align: right">
+    <ion-title>انشاء صفحه  شخصيه</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <div class="header-content" id="header-content">
+  
+    <div class="content">
+        <div class="singupview">
+    
+          <div class="imagedev" *ngIf="imagecheck" [ngStyle]="{'background-image': 'url(' + imageurl + ')'}"></div>
+
+
+            <div class="myimage" (click)="takePhoto()" *ngIf="!imagecheck">
+                <div class="myimage-content">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                <p>رفع صورة</p>
+              </div>
+            </div>
+
+    <div class="inputs">
+    
+    <!-- singup view-->
+   
+    
+        <div class="email">
+          <input type="text" placeholder="الاسم" [(ngModel)]="name" required>        
+        </div>
+        
+    
+        
+        <div class="pass">
+          <input type="text" placeholder="العنوان" [(ngModel)]="address" required>         
+        </div>
+
+                    
+        <div class="pass">
+            <input type="number" placeholder="رقم الهاتف" [(ngModel)]="phone" required> 
+          </div>
+        
+        <div class="logorreg">
+          <button ion-button color="secondary" outline (click)="addfod(name,address,phone)" >انشاء</button>
+        </div>
+    </div>
+    
+    
+    </div>
+    
+    </div>
+    
+    </div>
+</ion-content>

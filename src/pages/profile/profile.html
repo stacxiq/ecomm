@@ -1,0 +1,50 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" style="text-align: right">
+    <ion-title>الصفحه الشخصيه</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="user-photo" padding-top>
+    <ion-avatar>
+      <img [src]="user.image">
+    </ion-avatar>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label style="text-align: right">
+        <p>الاسم</p>
+        <h2>{{user.name}}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="end"></ion-icon>
+      <ion-label style="text-align: right">
+        <p>البريد الالكتروني</p>
+        <h2>{{user.email}}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="end"></ion-icon>
+      <ion-label style="text-align: right">
+        <p>العنوان</p>
+        <h2>{{user.address}}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-label style="text-align: right">
+        <p>رقم الهاتف</p>
+        <h2>{{user.phone}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
