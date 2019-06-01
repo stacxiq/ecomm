@@ -5,8 +5,8 @@ export class ProductManagementProvider {
 
   constructor(public db : AngularFireDatabase) {
   }
-  async addProducts(category:string,userid:string,name:string,price:number,description:string,image:string){
-    return await this.db.list(`waitingproducts/${category}`).push({
+  addProducts(category:string,userid:string,name:string,price:number,description:string,image:string){
+    return  this.db.list(`waitingproducts/${category}`).push({
       userid : userid,
       name:name,
       description:description,
@@ -24,8 +24,8 @@ export class ProductManagementProvider {
     });
   }
 
-  buy(count,name,desc,price,img,username,address,phone){
-    this.db.list(`paid`).push({
+ async buy(count,name,desc,price,img,username,address,phone){
+    return await this.db.list(`paid`).push({
       count:count,
       name:name,
       desc:desc,

@@ -70,6 +70,15 @@ page-buy-products .header-content .content .inputs input  {
     border-radius: 3px;
     padding-right: 40px;
 }
+page-buy-products .header-content .content .inputs textarea  {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    padding: 14px;
+    width: 100%;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding-right: 40px;
+}
 page-buy-products textarea{
     direction: rtl;
     font-family: 'Cairo', sans-serif;

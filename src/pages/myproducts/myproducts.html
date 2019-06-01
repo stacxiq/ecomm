@@ -32,13 +32,13 @@
     <div class="imagedev" [ngStyle]="{'background-image': 'url(' + item.payload.val().image + ')'}"></div>
     <ion-card-content>
       <ion-card-title>
-        <h3>
+        <h3 style="text-align: right">
           {{item.payload.val().name}}
         </h3>
   
         </ion-card-title>
-      <p>
-       {{item.payload.val().des}}
+      <p style="text-align: right">
+       {{item.payload.val().description}}
       </p>
     </ion-card-content>
     
@@ -47,21 +47,11 @@
         <div class="select">
 
             <div class="price">
-             <span (click)="delete(item.key)">
+             <span (click)="delete(item.payload.key)">
                 حذف
              </span>
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </div>
-  
-            <div class="get" >
-             
-              <span (click)="edit(item.key,item.payload.val().image,item.payload.val().name,item.payload.val().des,item.payload.val().price)">
-                  تعديل
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </span>
-  
-            </div>
-  
           </div>
 
     </ion-item>

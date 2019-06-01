@@ -56,25 +56,21 @@ export class MyproductsPage {
     }
 
     delete(key){
-      
-
       this.alert.create({
-        subTitle:"هل انت متأكد من حذف الاكلة؟",
+        subTitle:"هل انت متأكد من حذف ",
         cssClass:"setdire",
         buttons:[{text:"حذف",handler: ()=> {
-          this.db.list("fods").remove(key).then( OmarReal => {
+          this.storage.get('id').then((res)=>{
+          this.db.list(`myproducts/${res}`).remove(key).then( OmarReal => {
             this.toast.create({
-              message:"تم حذف الاكلة",
+              message:"تم حذف ",
               duration:3000,
               cssClass:"setdire"
             }).present();
           } )
+        });
         }},"الغاء"]
       }).present();
-
-    }
-
-    edit(key,image,name,des,price){
     }
 
 }

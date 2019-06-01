@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthProvider } from '../../providers/auth/auth';
 import $ from 'jquery';
 import firebase, { storage } from 'firebase';

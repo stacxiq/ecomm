@@ -19,6 +19,8 @@ export class MyApp {
       ) {
     
     platform.ready().then(() => {
+      statusBar.styleDefault();
+      splashScreen.hide();
       this.storage.get('id').then((id)=>{
         if(id == null){
           firebase.auth().onAuthStateChanged(function(user) {
@@ -31,8 +33,7 @@ export class MyApp {
       });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+
     });
   }
 }

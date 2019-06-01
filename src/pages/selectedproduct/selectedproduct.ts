@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams, ToastController } from 'ionic-angular';
 import { ProductManagementProvider } from '../../providers/product-management/product-management';
 import { Storage } from '@ionic/storage';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { ProductPage } from '../product/product';
 @Component({
   selector: 'page-selectedproduct',
   templateUrl: 'selectedproduct.html',
@@ -14,7 +15,8 @@ export class SelectedproductPage {
     public navParams: NavParams, 
   public pm:ProductManagementProvider,
   public storage:Storage,
-  public db:AngularFireDatabase
+  public db:AngularFireDatabase,
+  public toast:ToastController
     ) {
   }
 
@@ -44,7 +46,14 @@ export class SelectedproductPage {
         // this.user.name = data[3].toString();
         // this.user.image = data[2].toString();
         // this.user.phone = data[4].toString();
-       this.pm.buy(this.i,item.name,item.description,item.price,item.image,data[3],data[0],data[4]);
+       this.pm.buy(this.i,item.name,item.description,item.price,item.image,data[3],data[0],data[4]).then(()=>{
+        this.toast.create({
+          message:"تم حذف ",
+          duration:3000,
+          cssClass:"setdire"
+        }).present(); 
+        this.navCtrl.setRoot(ProductPage);
+       });
         }
       });
     
