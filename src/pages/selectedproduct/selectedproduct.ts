@@ -3,7 +3,8 @@ import {  NavController, NavParams, ToastController } from 'ionic-angular';
 import { ProductManagementProvider } from '../../providers/product-management/product-management';
 import { Storage } from '@ionic/storage';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { ProductPage } from '../product/product';
+
+import { HomePage } from '../home/home';
 @Component({
   selector: 'page-selectedproduct',
   templateUrl: 'selectedproduct.html',
@@ -11,8 +12,8 @@ import { ProductPage } from '../product/product';
 export class SelectedproductPage {
   product:any;
   i=0;
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
   public pm:ProductManagementProvider,
   public storage:Storage,
   public db:AngularFireDatabase,
@@ -29,7 +30,7 @@ export class SelectedproductPage {
   }
   rem(){
     if(this.i == 0){
-    
+
     }
     else{
       this.i--;
@@ -48,15 +49,16 @@ export class SelectedproductPage {
         // this.user.phone = data[4].toString();
        this.pm.buy(this.i,item.name,item.description,item.price,item.image,data[3],data[0],data[4]).then(()=>{
         this.toast.create({
-          message:"تم حذف ",
+          message:"تم  ",
           duration:3000,
           cssClass:"setdire"
-        }).present(); 
-        this.navCtrl.setRoot(ProductPage);
+        }).present();
+        this.navCtrl.popToRoot();
        });
+
         }
       });
-    
+
     })
   }
 }

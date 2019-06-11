@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams,  AlertController } from 'ionic-angular';
+import {  NavController, NavParams,  AlertController, App } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { SelectedproductPage } from '../selectedproduct/selectedproduct';
@@ -18,7 +18,7 @@ import { SelectedproductPage } from '../selectedproduct/selectedproduct';
 export class ProductPage {
   list : Observable<any>;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public db : AngularFireDatabase, public alert : AlertController,
+    public db : AngularFireDatabase,private app:App, public alert : AlertController,
     ){}
 
   ionViewDidLoad() {
@@ -28,7 +28,7 @@ export class ProductPage {
     console.log(this.navParams.data);
   }
   buy(item:any){
-this.navCtrl.push(SelectedproductPage,item);
+    this.app.getRootNav().push(SelectedproductPage,item);
   }
 
 }

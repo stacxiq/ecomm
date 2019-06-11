@@ -12,10 +12,10 @@
 
 <ion-content no-padding>
   <div class="header-content" id="header-content">
-  
+
     <div class="content">
         <div class="singupview">
-    
+
           <div class="imagedev" *ngIf="imagecheck" [ngStyle]="{'background-image': 'url(' + imageurl + ')'}"></div>
 
 
@@ -26,30 +26,37 @@
               </div>
             </div>
 
-    <div class="inputs">
-    
+
+      <ion-list no-lines>
+
     <!-- singup view-->
-   
-    
-        <div class="email">
-          <input type="text" placeholder="الاسم" [(ngModel)]="name" required>        
-        </div>      
-        <div class="pass">
-            <input type="number" placeholder=" السعر" [(ngModel)]="price" required> 
-        </div>
-        <div class="input-group">
-            <textarea class="form-control custom-control" rows="3" style="text-align: right" placeholder=" التفاصيل" [(ngModel)]="desc"></textarea>     
-        </div>
-        
+
+    <ion-item class="input">
+          <ion-input type="text" placeholder="الاسم" [(ngModel)]="name" required></ion-input>
+    </ion-item>
+    <ion-item class="input">
+            <ion-input type="number" placeholder=" السعر" [(ngModel)]="price" required></ion-input>
+    </ion-item>
+        <ion-item class ="select">
+          <ion-label  *ngIf="show()">الحاله</ion-label>
+          <ion-select [(ngModel)]="status">
+            <ion-option value="جديدة">جديدة</ion-option>
+            <ion-option value="مستعمله">مستعمله</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="input">
+            <ion-textarea class="form-control custom-control" rows="3" style="text-align: right" placeholder=" التفاصيل" [(ngModel)]="desc"></ion-textarea>
+        </ion-item>
+
         <div class="logorreg">
           <button ion-button color="secondary" outline (click)="addfod()" >انشاء</button>
         </div>
+        </ion-list>
     </div>
-    
-    
+
+
     </div>
-    
+
     </div>
-    
-    </div>
+
 </ion-content>

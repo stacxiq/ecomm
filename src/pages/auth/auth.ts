@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import {  NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 import $ from "jquery";
 import { AuthProvider } from '../../providers/auth/auth';
@@ -7,7 +7,7 @@ import { UserProfilePage } from '../user-profile/user-profile';
 import { Storage } from '@ionic/storage';
 import firebase from 'firebase';
 import { ShoppingTabsPage } from '../shopping-tabs/shopping-tabs';
-@IonicPage()
+
 @Component({
   selector: 'page-auth',
   templateUrl: 'auth.html',

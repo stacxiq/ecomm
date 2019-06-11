@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import {  NavController, NavParams, ToastController, LoadingController, App, ShowWhen } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -8,8 +8,7 @@ import $ from 'jquery';
 import firebase, { storage } from 'firebase';
 import { Storage } from '@ionic/storage'
 import { ProductManagementProvider } from '../../providers/product-management/product-management';
-import { ShoppingTabsPage } from '../shopping-tabs/shopping-tabs';
-import { MyproductsPage } from '../myproducts/myproducts';
+
 /**
  * Generated class for the BuyProductsPage page.
  *
@@ -23,6 +22,7 @@ import { MyproductsPage } from '../myproducts/myproducts';
 export class BuyProductsPage {
   uuid='';
   address:string;
+  status='';
   name:string;
   price:number;
   desc:string;
@@ -31,6 +31,7 @@ export class BuyProductsPage {
      private camera:Camera,
      private storage:Storage,
      public load : LoadingController,
+     private app:App,
       public af:AuthProvider,
       public PMP:ProductManagementProvider) {
   }
@@ -48,7 +49,7 @@ export class BuyProductsPage {
     }).then(()=>{
       console.log('uuid' + this.uuid)
     });
-    
+
   }
   imageurl = "";
   imagecheck= false;
@@ -62,22 +63,23 @@ export class BuyProductsPage {
     if(this.imageurl.length < 1){
       this.imageurl = 'https://corporate.oriflame.com/Global/Images%20achive/Products/Bioclinic_hr.jpg';
     }
-    this.PMP.addProducts(this.navParams.data.toString(),this.uuid,this.name,this.price,this.desc,this.imageurl).then((product)=>{
-      var toast = this.toast.create({
+    this.PMP.addProducts(this.navParams.data.toString(),this.uuid,this.name,this.price,this.desc,this.imageurl,this.status).then((product)=>{
+       this.toast.create({
         message:"تم نشر ",
         duration:3000,
         cssClass:"setdire"
       }).present();
       this.navCtrl.popToRoot();
     }).then(()=>{
-      this.navCtrl.setRoot('BuyPage');
+      this.navCtrl.popToRoot();
     });
+    console.log(this.status);
   }
   takePhoto(){
     const options: CameraOptions = {
       targetHeight:720 ,
       targetWidth:720,
-      quality:100, 
+      quality:100,
       destinationType : this.camera.DestinationType.DATA_URL,
       encodingType:this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -91,16 +93,16 @@ export class BuyProductsPage {
   this.loading.present();
     this.mySelectedPhoto = this.dataURLtoBlob('data:image/jpeg;base64,'+imageData);
         this.upload();
-            
+
             },(err)=>{
         alert(JSON.stringify(err));
             });
-    
-    
+
+
     }
-    
-        
-        
+
+
+
     dataURLtoBlob(myURL){
         let binary = atob(myURL.split(',')[1]);
     let array = [];
@@ -108,12 +110,12 @@ export class BuyProductsPage {
         array.push(binary.charCodeAt(i));
     }
         return new Blob([new Uint8Array(array)],{type:'image/jpeg'});
-    }    
-        
-        
+    }
+
+
     upload(){
 
-      
+
     var char = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v"];
     var rand1 = Math.floor(Math.random() * char.length);
     var rand2 = Math.floor(Math.random() * char.length);
@@ -128,10 +130,10 @@ export class BuyProductsPage {
           this.loading.dismiss();
 
           uploadTask.getDownloadURL().then(url =>{
-            
+
             this.imagecheck = true;
             this.imageurl = url;
-  
+
           });
 
         });
@@ -141,9 +143,17 @@ export class BuyProductsPage {
 
           alert(JSON.stringify(err));
         })
-  
+
 
     }
-    }  
+
+    }
+    show(){
+      if(this.status.length <= 1){
+        return true
+      } else{
+        return false;
+      }
+    }
 
 }

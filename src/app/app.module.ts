@@ -21,6 +21,10 @@ import { MyproductsPage } from '../pages/myproducts/myproducts'
 import { BuyProductsPage } from '../pages/buy-products/buy-products';
 import { ProductPage } from '../pages/product/product';
 import { SelectedproductPage } from '../pages/selectedproduct/selectedproduct';
+import { AllproductsPage } from '../pages/allproducts/allproducts';
+import { AuthPage } from '../pages/auth/auth';
+import { BuyPage } from '../pages/buy/buy';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { SelectedproductPage } from '../pages/selectedproduct/selectedproduct';
     MyproductsPage,
     BuyProductsPage,
     ProductPage,
-    SelectedproductPage
+    SelectedproductPage,
+    AllproductsPage,
+    AuthPage,
+    BuyPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,10 @@ import { SelectedproductPage } from '../pages/selectedproduct/selectedproduct';
     MyproductsPage,
     BuyProductsPage,
     ProductPage,
-    SelectedproductPage
+    SelectedproductPage,
+    AuthPage,
+    BuyPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
@@ -61,7 +72,7 @@ import { SelectedproductPage } from '../pages/selectedproduct/selectedproduct';
     AuthProvider,
     AngularFireDatabase,
     ProductManagementProvider,
-    
+    AllproductsPage
   ]
 })
 export class AppModule {}

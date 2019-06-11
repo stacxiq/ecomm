@@ -5,28 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="primary"> 
+  <ion-navbar color="primary">
     <ion-title style="text-align: right"> منتجاتي</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div class="waiteloading" *ngIf="!list">
-
-    <div class="loadicon">
-    <i id="load" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-    
-    </div>
-    </div>
-    
-    <div class="notfoundheader" *ngIf="!list" >
-    
-        <div class="notfound">
-            <i class="fa fa-frown-o fa-3x" aria-hidden="true"></i>
-            <p>لا يوجد اكلات</p>
-            </div>
-    </div>
-
 <ion-card *ngFor="let item of list | async ">
     <img [src]="item.payload.val().image" alt="" srcset="">
     <div class="imagedev" [ngStyle]="{'background-image': 'url(' + item.payload.val().image + ')'}"></div>
@@ -35,13 +19,15 @@
         <h3 style="text-align: right">
           {{item.payload.val().name}}
         </h3>
-  
         </ion-card-title>
       <p style="text-align: right">
        {{item.payload.val().description}}
-      </p>
+      </p><br>
+      <p style="text-align: right">
+        {{item.payload.val().status}}
+       </p>
     </ion-card-content>
-    
+
     <ion-item>
 
         <div class="select">

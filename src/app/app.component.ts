@@ -3,7 +3,6 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ShoppingTabsPage } from '../pages/shopping-tabs/shopping-tabs';
-import { AuthProvider } from '../providers/auth/auth';
 import { Storage } from '@ionic/storage';
 import firebase from 'firebase';
 @Component({

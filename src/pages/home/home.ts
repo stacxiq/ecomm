@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { ProductPage } from '../product/product';
+import { AuthProvider } from '../../providers/auth/auth';
+import { AuthPage } from '../auth/auth';
 
 @Component({
   selector: 'page-home',
@@ -8,11 +10,20 @@ import { ProductPage } from '../product/product';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,private app:App, private _AuthProvider:AuthProvider) {
 
   }
   buy(item:string){
-    this.navCtrl.push(ProductPage,item);
+    if(this._AuthProvider.isLoggedIn()){
+      console.log(this._AuthProvider.isLoggedIn());
+      console.log(item);
+      this.app.getRootNav().push(ProductPage,item);
+    }  else{
+      this.app.getRootNav().setRoot(AuthPage);
+      this.navCtrl.goToRoot;
+      console.log(this._AuthProvider.isLoggedIn());
+    }
+
   }
 
 }
