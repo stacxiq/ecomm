@@ -5,6 +5,7 @@ import { ShoppingTabsPage } from '../pages/shopping-tabs/shopping-tabs';
 import { Storage } from '@ionic/storage';
 import firebase from 'firebase';
 import { AuthProvider } from '../providers/auth/auth';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,10 +15,12 @@ export class MyApp {
   constructor(platform: Platform,
      statusBar: StatusBar,
       public storage:Storage,
-      public af:AuthProvider
+      public af:AuthProvider,
+      private splashScreen: SplashScreen
       ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
+      splashScreen.hide();
       console.log(af.isLoggedIn());
       this.storage.get('id').then((id)=>{
         if(id == null){

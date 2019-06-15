@@ -27,6 +27,7 @@ import { RequestProvider } from '../providers/request/request';
 import { ChatPage } from '../pages/chat/chat';
 import { ChatProvider } from '../providers/chat/chat';
 import { ImghandlerProvider } from '../providers/imghandler/imghandler';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 @NgModule({
   declarations: [
     MyApp,
@@ -72,6 +73,7 @@ import { ImghandlerProvider } from '../providers/imghandler/imghandler';
     Camera,
     AngularFireAuth,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SplashScreen,
     AuthProvider,
     AngularFireDatabase,
     ProductManagementProvider,
