@@ -15,13 +15,10 @@ export class HomePage {
   }
   buy(item:string){
     if(this._AuthProvider.isLoggedIn()){
-      console.log(this._AuthProvider.isLoggedIn());
-      console.log(item);
       this.app.getRootNav().push(ProductPage,item);
     }  else{
       this.app.getRootNav().setRoot(AuthPage);
       this.navCtrl.goToRoot;
-      console.log(this._AuthProvider.isLoggedIn());
     }
 
   }

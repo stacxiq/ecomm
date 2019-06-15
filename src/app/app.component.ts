@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
 import { ShoppingTabsPage } from '../pages/shopping-tabs/shopping-tabs';
 import { Storage } from '@ionic/storage';
 import firebase from 'firebase';
+import { AuthProvider } from '../providers/auth/auth';
 @Component({
   templateUrl: 'app.html'
 })
@@ -13,21 +13,28 @@ export class MyApp {
 
   constructor(platform: Platform,
      statusBar: StatusBar,
-      splashScreen: SplashScreen,
       public storage:Storage,
+      public af:AuthProvider
       ) {
-    
     platform.ready().then(() => {
       statusBar.styleDefault();
-      splashScreen.hide();
+      console.log(af.isLoggedIn());
       this.storage.get('id').then((id)=>{
         if(id == null){
           firebase.auth().onAuthStateChanged(function(user) {
-            console.log(user.uid);
-            storage.set('id',user.uid);
+            if(user){
+              console.log(user.uid);
+              storage.set('id',user.uid);
+              storage.set('isloggedin',true);
+            } else{
+              console.log('please sign in')
+            }
+
           });
         } else{
           console.log(id);
+          storage.set('isloggedin',true);
+
         }
       });
       // Okay, so the platform is ready and our plugins are available.

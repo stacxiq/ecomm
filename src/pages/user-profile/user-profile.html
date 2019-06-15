@@ -12,11 +12,11 @@
 
 <ion-content no-padding>
   <div class="header-content" id="header-content">
-  
+
     <div class="content">
         <div class="singupview">
-    
-          <div class="imagedev" *ngIf="imagecheck" [ngStyle]="{'background-image': 'url(' + imageurl + ')'}"></div>
+
+          <img class="imagedev" *ngIf="imagecheck" [src]="imageurl">
 
 
             <div class="myimage" (click)="takePhoto()" *ngIf="!imagecheck">
@@ -27,34 +27,34 @@
             </div>
 
     <div class="inputs">
-    
+
     <!-- singup view-->
-   
-    
+
+
         <div class="email">
-          <input type="text" placeholder="الاسم" [(ngModel)]="name" required>        
-        </div>
-        
-    
-        
-        <div class="pass">
-          <input type="text" placeholder="العنوان" [(ngModel)]="address" required>         
+          <input type="text" placeholder="الاسم" [(ngModel)]="name" required>
         </div>
 
-                    
+
+
         <div class="pass">
-            <input type="number" placeholder="رقم الهاتف" [(ngModel)]="phone" required> 
+          <input type="text" placeholder="العنوان" [(ngModel)]="address" required>
+        </div>
+
+
+        <div class="pass">
+            <input type="number" placeholder="رقم الهاتف" [(ngModel)]="phone" required>
           </div>
-        
+
         <div class="logorreg">
           <button ion-button color="secondary" outline (click)="addfod(name,address,phone)" >انشاء</button>
         </div>
     </div>
-    
-    
+
+
     </div>
-    
+
     </div>
-    
+
     </div>
 </ion-content>

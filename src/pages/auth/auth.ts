@@ -39,6 +39,7 @@ userId;
     let userId=firebase.auth().currentUser.uid;
     if(userId != null){
       this.storage.set('id',userId);
+      this.storage.set('isloggedin',true);
     } else{
     }
     this.navCtrl.setRoot(UserProfilePage);
@@ -66,11 +67,11 @@ userId;
     $(".login").slideDown();
   }
 
-   login(email,pass){    
+   login(email,pass){
     var load = this.load.create({
       content:"جاري تسجيل الدخول",
       cssClass:"loaddire"
-      });  
+      });
 
   if(email.length > 0 && pass.length > 0){
 
@@ -80,6 +81,7 @@ userId;
     let userId=firebase.auth().currentUser.uid;
     if(userId != null){
       this.storage.set('id',userId);
+      this.storage.set('isloggedin',true);
       this.storage.get('id').then((res)=>{
         console.log(res);
         this.userId = res;
@@ -93,7 +95,7 @@ userId;
         this.navCtrl.setRoot(UserProfilePage);
         this.navCtrl.goToRoot;
       }
-    } 
+    }
   }).catch( ()=> {
 
     load.dismiss();

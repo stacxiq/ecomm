@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
-
 import {Storage} from '@ionic/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
 @Component({
@@ -17,9 +15,7 @@ user ={
 }
 
 list;
-  constructor(public navCtrl: NavController,
-     public navParams: NavParams ,
-      private storage:Storage,
+  constructor(private storage:Storage,
       private db:AngularFireDatabase) {
         this.list = db.list("fods").snapshotChanges();
   }
@@ -34,9 +30,7 @@ list;
         this.user.image = data[2].toString();
         this.user.phone = data[4].toString();
         }
-        console.log(data);
       },(err)=>{
-        console.log(err);
       });
 
     })

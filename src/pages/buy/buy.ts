@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, App } from 'ionic-angular';
+import {  NavController, App } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
-import { UserProfilePage } from '../user-profile/user-profile';
 import { BuyProductsPage } from '../buy-products/buy-products';
 import { AuthPage } from '../auth/auth';
 
@@ -14,7 +13,7 @@ export class BuyPage {
 
   constructor(public navCtrl: NavController,
      private app:App,
-     public navParams: NavParams,private _AuthProvider:AuthProvider) {
+     private _AuthProvider:AuthProvider) {
   }
 
   ionViewDidLoad() {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
-import { Observable, from } from 'rxjs';
+import {  NavController, ToastController, AlertController } from 'ionic-angular';
+import { Observable} from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 import $ from 'jquery';
 import { Storage } from '@ionic/storage';
@@ -17,30 +17,29 @@ import { Storage } from '@ionic/storage';
 })
 export class MyproductsPage {
   list : Observable<any>;
-  uuid;
 
   ionViewDidLoad() {
 
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController,
     public db : AngularFireDatabase, public alert : AlertController,
     public toast : ToastController, private storage:Storage) {
       this.storage.get('id').then((res)=>{
        this.list = db.list(`myproducts/${res}`).snapshotChanges();
        db.list(`myproducts/${res}`).valueChanges().subscribe(data => {
-       
+
         $("page-menufood .waiteloading").hide();
-  
+
         if(data[0] == undefined){
           $("page-menufood .notfoundheader").css("display","flex");
         }
-  
+
         if(data[0] != undefined){
           $("page-menufood .notfoundheader").hide();
         }
       });
-   
-  
+
+
 
     })
 
@@ -50,9 +49,9 @@ export class MyproductsPage {
   ngOnInit(){
     var winh = $(window).height();
     var navh = $(".tabs-md .tab-button").innerHeight();
-  
+
     $("page-menufood .waiteloading,page-menufood .notfoundheader").height(winh - (navh + navh) );
-  
+
     }
 
     delete(key){

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
@@ -15,17 +14,19 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ProductManagementProvider } from '../providers/product-management/product-management';
 import { ShoppingTabsPage } from '../pages/shopping-tabs/shopping-tabs';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
-import { IonicStorageModule } from '@ionic/storage';
-
+import { IonicStorageModule } from '@ionic/storage'
 import { MyproductsPage } from '../pages/myproducts/myproducts'
 import { BuyProductsPage } from '../pages/buy-products/buy-products';
 import { ProductPage } from '../pages/product/product';
 import { SelectedproductPage } from '../pages/selectedproduct/selectedproduct';
-import { AllproductsPage } from '../pages/allproducts/allproducts';
 import { AuthPage } from '../pages/auth/auth';
 import { BuyPage } from '../pages/buy/buy';
 import { ProfilePage } from '../pages/profile/profile';
-
+import { AdminconnectPage } from '../pages/adminconnect/adminconnect';
+import { RequestProvider } from '../providers/request/request';
+import { ChatPage } from '../pages/chat/chat';
+import { ChatProvider } from '../providers/chat/chat';
+import { ImghandlerProvider } from '../providers/imghandler/imghandler';
 @NgModule({
   declarations: [
     MyApp,
@@ -36,10 +37,11 @@ import { ProfilePage } from '../pages/profile/profile';
     BuyProductsPage,
     ProductPage,
     SelectedproductPage,
-    AllproductsPage,
     AuthPage,
     BuyPage,
-    ProfilePage
+    ProfilePage,
+    AdminconnectPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -61,18 +63,22 @@ import { ProfilePage } from '../pages/profile/profile';
     SelectedproductPage,
     AuthPage,
     BuyPage,
-    ProfilePage
+    ProfilePage,
+    AdminconnectPage,
+    ChatPage
   ],
   providers: [
     StatusBar,
     Camera,
-    SplashScreen,
     AngularFireAuth,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     AngularFireDatabase,
     ProductManagementProvider,
-    AllproductsPage
+    RequestProvider,
+    ChatProvider,
+    ImghandlerProvider,
+
   ]
 })
 export class AppModule {}

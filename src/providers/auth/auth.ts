@@ -7,11 +7,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @Injectable()
 export class AuthProvider {
   user:User;
+  myuser;
+  ab = false;
+ public mreq = [];
 fireUser = firebase.database().ref(`users`);
-
+firefriends = firebase.database().ref(`friends`);
   constructor(public afAuth: AngularFireAuth,
        public db : AngularFireDatabase) {
-    console.log('Hello AuthProvider Provider');
   }
   login(email: string, password: string): Promise<any> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -32,6 +34,7 @@ fireUser = firebase.database().ref(`users`);
         phone:phone,
         email:firebase.auth().currentUser.email,
         image:imageurl,
+        uid:firebase.auth().currentUser.uid
       }).then( done => {
         console.log(done);
       },(err)=>{
@@ -40,6 +43,16 @@ fireUser = firebase.database().ref(`users`);
   }
   getUser():firebase.database.Reference{
     return this.fireUser;
+  }
+  getAdmin(){
+    var promise = new Promise((resolve, reject) => {
+      this.fireUser.child('ZSeg05j2Mjh2lbL14YhzROc9FSJ2').once('value', (snapshot) => {
+        resolve(snapshot.val());
+      }).catch((err) => {
+        reject(err);
+        })
+      })
+      return promise;
   }
   checkUser(id):boolean{
     let m=false;
@@ -56,7 +69,18 @@ fireUser = firebase.database().ref(`users`);
     if(firebase.auth().currentUser != null){
       return true;
     } else{
-     return false 
+     return false
     }
+  }
+  ableToChat() {
+    var promise = new Promise((resolve, reject) => {
+    this.firefriends.child(firebase.auth().currentUser.uid).once('value', (snapshot) => {
+      console.log(firebase.auth().currentUser.uid);
+      resolve(snapshot.val());
+    }).catch((err) => {
+      reject(err);
+      })
+    })
+    return promise;
   }
 }
